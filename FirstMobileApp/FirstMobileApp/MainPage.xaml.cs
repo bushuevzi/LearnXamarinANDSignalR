@@ -1,5 +1,4 @@
-﻿using FirstMobileApp;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace FirstMobileApp
 {

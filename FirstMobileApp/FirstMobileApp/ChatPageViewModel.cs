@@ -1,16 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
-using Plugin.DeviceInfo;
 using Xamarin.Forms;
 
 namespace FirstMobileApp
@@ -60,7 +52,7 @@ namespace FirstMobileApp
         {
             // создание подключения
             hubConnection = new HubConnectionBuilder()
-                .WithUrl("http://10.0.1.49:5000")
+                .WithUrl("http://192.168.1.38:5000/chatHub")
                 .Build();
 
             Messages = new ObservableCollection<MessageData>();
@@ -78,7 +70,7 @@ namespace FirstMobileApp
                 await Connect();
             };
 
-            hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+            hubConnection.On<string, string>("Receive", (user, message) =>
             {
                 SendLocalMessage(user, message);
             });
